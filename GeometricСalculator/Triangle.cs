@@ -74,7 +74,7 @@
 
 		public override double Area {
 			get {
-				Double i = (ASide + BSide + CSide) / 2.0;
+				var i = (ASide + BSide + CSide) / 2.0;
 				return Math.Round(Math.Sqrt(i * (i - ASide) * (i - BSide) * (i - CSide)), 1);
 			}
 		}
@@ -83,9 +83,9 @@
 			get {
 				///It is clear that here you can do micro optimization, 
 				///but it seemed to me that readability is more important
-				double result_A_hypotenuse = Math.Abs((CSide * CSide + BSide * BSide) - (ASide * ASide));
-				double result_B_hypotenuse = Math.Abs((CSide * CSide + ASide * ASide) - (BSide * BSide));
-				double result_C_hypotenuse = Math.Abs((ASide * ASide + BSide * BSide) - (CSide * CSide));
+				var result_A_hypotenuse = Math.Abs((CSide * CSide + BSide * BSide) - (ASide * ASide));
+				var result_B_hypotenuse = Math.Abs((CSide * CSide + ASide * ASide) - (BSide * BSide));
+				var result_C_hypotenuse = Math.Abs((ASide * ASide + BSide * BSide) - (CSide * CSide));
 
 				if ((result_A_hypotenuse < _epsilon) ||
 					 (result_B_hypotenuse < _epsilon) ||

@@ -13,6 +13,9 @@
 		/// <summary>
 		/// The function of calculating the area, regardless of the type of figure
 		/// </summary>
+		/// <exception cref="System.ArgumentNullException">
+		/// Thrown when the parameter <c>shape</c> is null
+		/// </exception>
 		public static double GetArea(AbstractShape shape) {
 			if (shape is null) {
 				throw new ArgumentNullException(nameof(shape));
@@ -32,7 +35,7 @@
 		/// Area of geometric shapes
 		/// </returns>
 		public static double GetArea(double r) {
-			AbstractShape shape = new Circle(r);
+			var shape = new Circle(r);
 			return shape.Area;
 		}
 
@@ -49,7 +52,7 @@
 		/// Area of geometric shapes
 		/// </returns>
 		public static double GetArea(double a, double b, double c) {
-			AbstractShape shape = new Triangle(a, b, c);
+			var shape = new Triangle(a, b, c);
 			return shape.Area;
 		}
 
@@ -64,9 +67,9 @@
 		/// otherwise false
 		/// </returns>
 		public static bool IsRectangular(Triangle triangle) {
-			if (triangle == null)
+			if (triangle is null) {
 				throw new ArgumentNullException("The value can not be null");
-
+			}
 			return triangle.IsRectangular;
 		}
 
@@ -81,8 +84,7 @@
 		/// otherwise false
 		/// </returns>
 		public static bool IsRectangular(double a, double b, double c) {
-			Triangle triangle = new Triangle(a, b, c);
-			return IsRectangular(triangle);
+			return IsRectangular(new Triangle(a, b, c));
 		}
 	}
 }
